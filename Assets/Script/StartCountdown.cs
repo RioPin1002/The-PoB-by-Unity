@@ -46,8 +46,11 @@ public class StartCountdown : MonoBehaviour
             textColor.a -= GameManager.fadeoutSpeed;
         }
         countdownText.color = textColor;
-        GameManager.gameStart = true;
+
+        if (GameManager.gameContinuing == false)
+        {
+            GameManager.gameStart = true;
+            GameManager.gameContinuing = true;
+        }
     }
-
-
 }

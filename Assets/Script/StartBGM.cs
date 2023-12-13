@@ -6,19 +6,20 @@ public class StartBGM : MonoBehaviour
 {
     // Start is called before the first frame update
     private AudioSource audioSource;
+    
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            Debug.Log("???");
-        }
-        if (GameManager.gameStart == true)
-        {
-            audioSource.Play();
-        }
     }
 
     // Update is called once per frame
+    private void Update() {
+        if (GameManager.gameStart == true)
+        {
+            Debug.Log("音楽再生開始");
+            audioSource.Play();
+            GameManager.gameStart = false;
+        }
+    }
 }

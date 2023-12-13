@@ -11,11 +11,15 @@ public class NodeMoving : MonoBehaviour
         Rigidbody rb = this.GetComponent<Rigidbody>();
         Vector3 force = new Vector3(0.0f, 0.0f, nodeSpeed * -1.0f);
         rb.AddForce(force, ForceMode.Impulse);
+        Renderer renderer = GetComponent<Renderer>();
+        Transform transform = GetComponent<Transform>();
+        transform.Rotate(new Vector3(0, 0, 90));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetNodeColor(Color color)
     {
-        
+        Renderer renderer = GetComponent<Renderer>();
+        renderer.material.color = color;
     }
+
 }

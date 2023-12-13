@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static float fadeoutSpeed = 0.2f;
 
     public static bool gameStart = false;
+    public static bool gameContinuing = false;
 
     public void Update() {
         
