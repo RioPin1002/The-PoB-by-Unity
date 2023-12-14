@@ -15,6 +15,6 @@ public class Counter : MonoBehaviour
         if (GameManager.gameContinuing == true)
         {
             timeFromStart += Time.deltaTime;
-        }   TimerText.text = "経過時間: " + (Math.Floor(timeFromStart/60)).ToString() + ":" + (timeFromStart%60).ToString("f2");
+        }   TimerText.text = "音楽開始: " + (Math.Floor(timeFromStart/60)).ToString() + ":" + (timeFromStart%60).ToString("f2");
     }
 }

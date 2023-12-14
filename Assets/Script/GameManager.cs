@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static bool countdown = true;
     public static float fadeoutSpeed = 0.2f;
 
+    public static int gameScore = 0;
+
     public static bool gameStart = false;
     public static bool gameContinuing = false;
 

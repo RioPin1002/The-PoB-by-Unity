@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NodeMoving : MonoBehaviour
 {
-    public float nodeSpeed = 40.0f;
+    public float nodeSpeed = 20.0f;
     // Start is called before the first frame update
     void Start()
     {

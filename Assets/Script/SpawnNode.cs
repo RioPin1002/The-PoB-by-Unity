@@ -50,25 +50,22 @@ public class SpawnNode : MonoBehaviour
         {
             for (int i = 0; i < _csvData.Count; i++)
             {
-                if (Counter.timeFromStart > float.Parse(_csvData[i][0]))
+                if (Counter.timeFromStart > float.Parse(_csvData[i][0]) - 6.353295)
                 {
                     if (spawnCheck[i] == 0)
                     {
                         NodeArray[i] = (GameObject)Instantiate(Node, new Vector3(0f, 1f, 67f), Quaternion.identity);
                         spawnCheck[i] = 1;
-
                         NodeMoving nodeMovingComponent = NodeArray[i].GetComponent<NodeMoving>();
-                        Debug.Log(_csvData[i][1]);
+                        
                         if (nodeMovingComponent != null)
                         {
                             if (int.Parse(_csvData[i][1]) == 0)
                             {
-                                Debug.Log("a");
                                 nodeMovingComponent.SetNodeColor(Color.red);
                             }
                             else if (int.Parse(_csvData[i][1]) == 1)
                             {
-                                Debug.Log("b");
                                 nodeMovingComponent.SetNodeColor(Color.blue);
                             }
                         }
