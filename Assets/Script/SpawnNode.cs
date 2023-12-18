@@ -4,6 +4,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using UnityEngine;
+using UnityEditor.Experimental.GraphView;
 
 public class SpawnNode : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public class SpawnNode : MonoBehaviour
     public static List<string[]> _csvData = new List<string[]>();
     private GameObject[] NodeArray;
     private int[] spawnCheck;
-    private GameObject Node;
+    private GameObject InNode;
+    private GameObject ExNode;
 
     private void Start() {
 
-        Node = (GameObject)Resources.Load("node");
+        ExNode = (GameObject)Resources.Load("nodeExhale");
+        InNode = (GameObject)Resources.Load("nodeInhale");
 
         
 
@@ -54,21 +57,15 @@ public class SpawnNode : MonoBehaviour
                 {
                     if (spawnCheck[i] == 0)
                     {
-                        NodeArray[i] = (GameObject)Instantiate(Node, new Vector3(0f, 1f, 67f), Quaternion.identity);
-                        spawnCheck[i] = 1;
-                        NodeMoving nodeMovingComponent = NodeArray[i].GetComponent<NodeMoving>();
-                        
-                        if (nodeMovingComponent != null)
+                        if (int.Parse(_csvData[i][1]) == 0)
                         {
-                            if (int.Parse(_csvData[i][1]) == 0)
-                            {
-                                nodeMovingComponent.SetNodeColor(Color.red);
-                            }
-                            else if (int.Parse(_csvData[i][1]) == 1)
-                            {
-                                nodeMovingComponent.SetNodeColor(Color.blue);
-                            }
+                            NodeArray[i] = (GameObject)Instantiate(InNode, new Vector3(0f, 1f, 67f), Quaternion.identity);
+                        } else {
+                            NodeArray[i] = (GameObject)Instantiate(ExNode, new Vector3(0f, 1f, 67f), Quaternion.identity);
                         }
+                        
+                        spawnCheck[i] = 1;
+                        
                     }
                 }
             }

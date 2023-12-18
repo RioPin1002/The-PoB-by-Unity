@@ -10,7 +10,6 @@ public class CatchInputDataByPython : MonoBehaviour
 {
     static UdpClient udp;
     public static int detect = 0;
-    int i = 0;
 
     // Start is called before the first frame update
     void Start()
