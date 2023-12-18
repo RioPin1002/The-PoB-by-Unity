@@ -16,9 +16,8 @@ public class InputArea : MonoBehaviour
     void Update()
     {
         // キーが押されたかどうかを確認
-        if (Input.GetKeyDown(activationKey))
+        if (CatchInputDataByPython.detect == 1 || CatchInputDataByPython.detect == 2)
         {
-            Debug.Log(Time.time);
             // アクティブにして、一定時間後に非アクティブに戻す
             StartCoroutine(ActivateAndDeactivate());
         }

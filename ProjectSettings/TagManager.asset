@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - NodeTag
+  - SkyboxCamera
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Lighting
   - Water
   - UI
   - 

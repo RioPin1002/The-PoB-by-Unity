@@ -45,3 +45,5 @@ plt.pause(10)
 
 # シリアルポートを閉じる
 ser.close()
+
+#/dev/cu.usbserial-0001
