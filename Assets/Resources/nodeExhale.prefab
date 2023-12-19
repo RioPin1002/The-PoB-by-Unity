@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5944458122578130787}
   m_Layer: 0
   m_Name: nodeExhale
-  m_TagString: NodeTag
+  m_TagString: NodeTagEX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

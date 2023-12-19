@@ -17,8 +17,8 @@ public class SpawnNode : MonoBehaviour
 
     private void Start() {
 
-        ExNode = (GameObject)Resources.Load("nodeExhale");
-        InNode = (GameObject)Resources.Load("nodeInhale");
+        ExNode = (GameObject)Resources.Load("Exhale");
+        InNode = (GameObject)Resources.Load("Inhale");
 
         
 
@@ -57,11 +57,12 @@ public class SpawnNode : MonoBehaviour
                 {
                     if (spawnCheck[i] == 0)
                     {
-                        if (int.Parse(_csvData[i][1]) == 0)
+                        if (int.Parse(_csvData[i][1]) == 1)
                         {
-                            NodeArray[i] = (GameObject)Instantiate(InNode, new Vector3(0f, 1f, 67f), Quaternion.identity);
+                            NodeArray[i] = (GameObject)Instantiate(InNode, new Vector3(0f, 0f, 67f), Quaternion.Euler(0f, 90f, -30f));
+
                         } else {
-                            NodeArray[i] = (GameObject)Instantiate(ExNode, new Vector3(0f, 1f, 67f), Quaternion.identity);
+                            NodeArray[i] = (GameObject)Instantiate(ExNode, new Vector3(0f, 0f, 67f), Quaternion.Euler(0f, 90f, 30f));
                         }
                         
                         spawnCheck[i] = 1;

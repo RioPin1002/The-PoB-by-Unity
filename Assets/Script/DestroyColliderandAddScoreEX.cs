@@ -11,6 +11,7 @@ public class NodeDestroyerandAddScoreEX : MonoBehaviour
         // ノードがColliderに触れた場合
         if (other.CompareTag("NodeTagEX"))
         {
+            Debug.Log("HitEX");
             GameManager.gameScore += 50;
             TimerText.text = "Score: " + (GameManager.gameScore).ToString();
 

@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - NodeTag
   - SkyboxCamera
+  - NodeTagEX
+  - NodeTagIN
+  - NodeTagIn
   layers:
   - Default
   - TransparentFX

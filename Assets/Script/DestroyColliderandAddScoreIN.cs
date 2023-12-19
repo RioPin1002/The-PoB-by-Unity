@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NodeDestroyerandAddScoreEX : MonoBehaviour
+public class NodeDestroyerandAddScoreIN : MonoBehaviour
 {
     public TextMeshProUGUI TimerText;
     private void OnTriggerEnter(Collider other)
     {
         // ノードがColliderに触れた場合
-        if (other.CompareTag("NodeTagEX"))
+        if (other.CompareTag("NodeTagIN"))
         {
+            Debug.Log("HitIn");
             GameManager.gameScore += 50;
             TimerText.text = "Score: " + (GameManager.gameScore).ToString();
 
