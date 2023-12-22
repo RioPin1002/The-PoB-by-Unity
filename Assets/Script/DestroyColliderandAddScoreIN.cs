@@ -6,7 +6,7 @@ using TMPro;
 public class NodeDestroyerandAddScoreIN : MonoBehaviour
 {
     public TextMeshProUGUI TimerText;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnterIN(Collider other)
     {
         // ノードがColliderに触れた場合
         if (other.CompareTag("NodeTagIN"))

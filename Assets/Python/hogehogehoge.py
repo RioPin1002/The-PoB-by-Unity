@@ -1,46 +1,41 @@
 import serial
 import matplotlib.pyplot as plt
-from datetime import datetime, timedelta
+from matplotlib.animation import FuncAnimation
+from time import time
 
-# Arduinoとのシリアル通信の設定
-arduino_port = '/dev/cu.usbserial-0001'  # Arduinoが接続されているポートに変更してください
-baud_rate = 230400
-ser = serial.Serial(arduino_port, baud_rate)
+# グローバル変数
+x_data = []
+y_data = []
 
-# データを格納するためのリスト
-timestamps = []
-values = []
+# シリアルポートの設定
+ser = serial.Serial('/dev/cu.usbserial-0001', 230400)  # COM3は適切なポートに変更してください
 
-# 開始時間を取得
-start_time = datetime.now()
+# グラフの初期設定
+fig, ax = plt.subplots()
+line, = ax.plot([], [], lw=2)
+ax.set_xlim(0, 10)  # x軸の範囲は適切に設定してください
+ax.set_ylim(0, 5000)  # y軸の範囲は適切に設定してください
 
-try:
-    while (datetime.now() - start_time).seconds < 5:
-        # Arduinoからデータを読み取り
-        raw_data = ser.readline().decode('utf-8').strip()
-        sensor_value = int(raw_data)
+# データの更新関数
+def update(frame):
+    # シリアル通信からデータを読み込む
+    data = ser.readline().decode('utf-8').rstrip()
 
-        # 現在の時刻を取得
-        current_time = datetime.now()
+    # 時刻を取得（任意の単位で時間を取得するために調整が必要）
+    current_time = time()
 
-        # リストに時刻とデータを追加
-        timestamps.append(current_time)
-        values.append(sensor_value)
+    # データをリストに追加
+    x_data.append(current_time)
+    y_data.append(float(data))
 
-        # 経過時間をターミナルに表示
-        elapsed_time = current_time - start_time
-        print(f"Elapsed Time: {elapsed_time.seconds} seconds", end='\r')
+    # グラフを更新
+    line.set_data(x_data, y_data)
 
-except KeyboardInterrupt:
-    pass
+    return line,
 
-finally:
-    # グラフをプロット
-    plt.plot(timestamps, values)
-    plt.xlabel('Time')
-    plt.ylabel('Sensor Value')
-    plt.show()
+# アニメーションの作成
+# intervalで更新間隔を指定（ミリ秒単位）
+ani = FuncAnimation(fig, update, blit=True, interval=100)
 
-    # シリアル通信をクローズ
-    ser.close()
-    print("\nSerial communication closed.")
+# グラフの表示
+plt.show()

@@ -31,6 +31,8 @@ timestamps = []
 detectHaleArray = []
 receiveToUnityToken = 0
 
+timelag = False
+
 detectHaleMode = False
 
 cliant = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -44,44 +46,62 @@ def ConvertFloat():
 
     return num
 
-def has_value_above_threshold(array, threshold):
-    return any(element >= threshold for element in array)
+def find_difference(arr):
+    if not arr:
+        # 配列が空の場合はエラー処理や適切なデフォルト値の返却などを考慮することが重要です。
+        return None
+
+    # 最大値と最小値を初期化
+    max_value = arr[0]
+    min_value = arr[0]
+
+    # 配列を走査して最大値と最小値を更新
+    for num in arr:
+        if num > max_value:
+            max_value = num
+        elif num < min_value:
+            min_value = num
+
+    # 差を計算して返す
+    return max_value - min_value
 
 startTime = datetime.now()
 
 while (datetime.now() - startTime).seconds < 1:
     print(ConvertFloat())
 
-startTime = datetime.now()
+startTime = time.time()
 print("start")
+counter = 0
 while True:
-    if len(meanArray) < ArrayMax:
-        meanArray.append(ConvertFloat())
-    else:
-        addNum = ConvertFloat()
-        addMean = np.mean(meanArray)
-        meanArray[:ArrayMax - 1] = meanArray[1:]
-        meanArray[ArrayMax - 1] = addNum
-        
-        if(addMean > 1950):
-            detectHaleMode = True
+    addNum = ConvertFloat()
+
+   
+    
+
+    if((addNum > 2200) & (timelag == False)):
         if(detectHaleMode == False):
-            addDateTime = time.time()
-        if(detectHaleMode == True):
-            if(time.time() - addDateTime < 0.3):
-                detectHaleArray.append(addMean)
-            else:
-                if has_value_above_threshold(detectHaleArray, 2200) == False:
-                    cliant.sendto("1".encode('utf-8'),(HOST, PORT))
-                    print("detectInhale")
-                else:
-                    cliant.sendto("2".encode('utf-8'),(HOST, PORT))
-                    print("detectExhale")
-                detectHaleMode = False
-                detectHaleArray = []
+            detectHaleMode = True
+            haleStartTime = time.time()
+            
+            detectHaleArray.append(addNum)
+            
 
-
-
+    if((detectHaleMode == True) & (timelag == False)):
+        detectHaleArray.append(addNum)
+        if(time.time() - haleStartTime > 0.1):
+            if(find_difference(detectHaleArray) > 2000):
+                cliant.sendto("1".encode('utf-8'),(HOST, PORT))
+                print(counter)
+                counter += 1
+                timelagtime = time.time()
+                timelag = True
+            detectHaleMode = False
+            
+    
+    if(timelag == True):
+        if(time.time() - timelagtime > 0.15):
+            timelag = False
 
     
 

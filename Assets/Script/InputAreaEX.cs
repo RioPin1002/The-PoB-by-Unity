@@ -16,7 +16,7 @@ public class InputAreaEX : MonoBehaviour
     void Update()
     {
         // キーが押されたかどうかを確認
-        if (CatchInputDataByPython.detect == 2)
+        if (CatchInputDataByPython.detect == 1)
         {
             // アクティブにして、一定時間後に非アクティブに戻す
             StartCoroutine(ActivateAndDeactivate());

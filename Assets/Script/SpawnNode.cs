@@ -22,7 +22,7 @@ public class SpawnNode : MonoBehaviour
 
         
 
-        _csvFile = Resources.Load("TestCSV 2") as TextAsset;
+        _csvFile = Resources.Load("Hitorigotsu") as TextAsset;
         StringReader reader = new StringReader(_csvFile.text);
 
         while(reader.Peek() != -1){
@@ -59,10 +59,10 @@ public class SpawnNode : MonoBehaviour
                     {
                         if (int.Parse(_csvData[i][1]) == 1)
                         {
-                            NodeArray[i] = (GameObject)Instantiate(InNode, new Vector3(0f, 0f, 67f), Quaternion.Euler(0f, 90f, -30f));
+                            NodeArray[i] = (GameObject)Instantiate(InNode, new Vector3(0f, 0f, 67f), Quaternion.Euler(0f, 90f, -90f));
 
                         } else {
-                            NodeArray[i] = (GameObject)Instantiate(ExNode, new Vector3(0f, 0f, 67f), Quaternion.Euler(0f, 90f, 30f));
+                            NodeArray[i] = (GameObject)Instantiate(ExNode, new Vector3(0f, 0f, 67f), Quaternion.Euler(0f, 90f, 90f));
                         }
                         
                         spawnCheck[i] = 1;

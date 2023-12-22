@@ -15,7 +15,7 @@ values = []
 start_time = datetime.now()
 
 try:
-    while (datetime.now() - start_time).seconds < 5:
+    while (datetime.now() - start_time).seconds < 1:
         # Arduinoからデータを読み取り
         raw_data = ser.readline().decode('utf-8').strip()
         sensor_value = int(raw_data)

@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     public static int gameScore = 0;
 
+    public static bool detect = false;
+    public static float detectTime;
+
     public static bool gameStart = false;
     public static bool gameContinuing = false;
 
