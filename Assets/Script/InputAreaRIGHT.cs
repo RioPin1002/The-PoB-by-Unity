@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class InputAreaIN : MonoBehaviour
+public class InputAreaRight : MonoBehaviour
 {
     public GameObject objectToActivate; // アクティブにするゲームオブジェクト
     public KeyCode activationKey = KeyCode.Space; // アクティベートするためのキー
@@ -16,7 +16,7 @@ public class InputAreaIN : MonoBehaviour
     void Update()
     {
         // キーが押されたかどうかを確認
-        if (CatchInputDataByPython.detect == 1)
+        if (CatchInputDataByPython.detect[2] == 1)
         {
             // アクティブにして、一定時間後に非アクティブに戻す
             StartCoroutine(ActivateAndDeactivate());
@@ -35,9 +35,6 @@ public class InputAreaIN : MonoBehaviour
         objectToActivate.SetActive(false);
     }
 }
-
-
-
 
 
 

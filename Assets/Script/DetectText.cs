@@ -11,7 +11,6 @@ public class TextDisplayScript : MonoBehaviour
     // このメソッドは毎フレーム呼び出されます
     void Update()
     {
-        Debug.Log(GameManager.detect);
         // あなたの条件に基づいてisConditionTrueを設定します
         // この例では、GameManager.detectがTrueの場合にisConditionTrueをTrueに設定しています
         bool isConditionTrue = GameManager.detect;
