@@ -62,11 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cfc5e8988a0354a7dae07e4befb74e52, type: 3}
       propertyPath: m_Name
-      value: Exhale
+      value: UP
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cfc5e8988a0354a7dae07e4befb74e52, type: 3}
       propertyPath: m_TagString
-      value: NodeTagEX
+      value: NodeTagU
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -8,6 +8,10 @@ TagManager:
   - NodeTagEX
   - NodeTagIN
   - NodeTagIn
+  - NodeTagL
+  - NodeTagR
+  - NodeTagU
+  - NodeTagD
   layers:
   - Default
   - TransparentFX

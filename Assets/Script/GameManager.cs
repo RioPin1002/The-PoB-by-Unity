@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
 
     public static int gameScore = 0;
 
-    public static bool detect;
+    public static int[] detect = new int[] { 0, 0, 0, 0 };
+
+    public static int triggerSound = 0;
+
     public static float detectTime;
 
     public static bool gameStart = false;

@@ -4,8 +4,8 @@ using System;
 using UnityEngine;
 using TMPro;
 
-public class Counter : MonoBehaviour
-{
+
+public class Counter : MonoBehaviour{
     public static float timeFromStart = 0f;
 
     public TextMeshProUGUI TimerText;
